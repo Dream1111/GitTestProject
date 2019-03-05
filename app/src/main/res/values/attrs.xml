@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--启动倒计时的控件的属性值-->
+    <declare-styleable name="CountDownView">
+        <attr name="ringColor" format="color|reference" />
+        <attr name="ringWidth" format="dimension|reference" />
+        <attr name="progressTextSize" format="dimension|reference" />
+        <attr name="progressTexrColor" format="color|reference" />
+        <attr name="countdownTime" format="integer|reference" />
+    </declare-styleable>
+</resources>
