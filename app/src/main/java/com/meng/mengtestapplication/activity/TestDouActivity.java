@@ -1,6 +1,10 @@
 package com.meng.mengtestapplication.activity;
 
 import android.graphics.Color;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,12 +12,15 @@ import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.meng.mengtestapplication.R;
 import com.meng.mengtestapplication.base.BaseRecAdapter;
 import com.meng.mengtestapplication.base.BaseRecViewHolder;
+import com.meng.mengtestapplication.fragment.TestDouFragment2;
+import com.meng.mengtestapplication.fragment.TestDouSlidingFragment;
 
 import org.w3c.dom.Text;
 
@@ -23,97 +30,51 @@ import java.util.Random;
 
 public class TestDouActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private List<Integer> integerList;
-    private PagerSnapHelper snapHelper;
-    private LinearLayoutManager layoutManager;
-    private ListDouAdapter adapter;
+    private ViewPager viewPager;
+    private MyFragment adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_dou);
-        recyclerView = findViewById(R.id.rv_pager);
+        viewPager = findViewById(R.id.vp_dou);
+        adapter = new MyFragment(getSupportFragmentManager(), getFragment());
 
-        integerList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            int red = new Random().nextInt(255);
-            int green = new Random().nextInt(255);
-            int blue = new Random().nextInt(255);
-
-            integerList.add(Color.argb(100, red, green, blue));
-        }
-
-        snapHelper = new PagerSnapHelper();
-        snapHelper.attachToRecyclerView(recyclerView);
-
-        layoutManager = new LinearLayoutManager(TestDouActivity.this, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-
-        adapter = new ListDouAdapter(integerList);
-        recyclerView.setAdapter(adapter);
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-
-
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                switch (newState) {
-                    case RecyclerView.SCROLL_STATE_IDLE://停止滚动
-//                        View view = snapHelper.findSnapView(layoutManager);
-//                        JZVideoPlayer.releaseAllVideos();
-//                        RecyclerView.ViewHolder viewHolder = recyclerView.getChildViewHolder(view);
-//                        if (viewHolder != null && viewHolder instanceof VideoViewHolder) {
-//                            ((VideoViewHolder) viewHolder).mp_video.startVideo();
-//                        }
-
-                        break;
-                    case RecyclerView.SCROLL_STATE_DRAGGING://拖动
-                        break;
-                    case RecyclerView.SCROLL_STATE_SETTLING://惯性滑动
-                        break;
-                }
-
-            }
-        });
-
+        viewPager.setAdapter(adapter);
+        //初始位置为第二个
+        viewPager.setCurrentItem(1);
     }
 
 
-    class ListDouAdapter extends BaseRecAdapter<Integer, ViewHolder> {
-        public ListDouAdapter(List<Integer> list) {
-            super(list);
+    private List<Fragment> getFragment() {
+        List<Fragment> fragments = new ArrayList<>();
+        fragments.add(new TestDouFragment2());
+        fragments.add(new TestDouSlidingFragment());
+        fragments.add(new TestDouFragment2());
+        return fragments;
+    }
+
+    /**
+     * 为fragment定义adapter
+     */
+    class MyFragment extends FragmentPagerAdapter {
+        private List<Fragment> fragments;
+
+        public MyFragment(FragmentManager fm, List<Fragment> fragments) {
+            super(fm);
+            this.fragments = fragments;
         }
 
         @Override
-        public void onHolder(ViewHolder holder, Integer bean, int position) {
-            ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
-            layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
-
-            holder.tv.setBackgroundColor(bean);
-            holder.tv.setText("第" + position + "个视频");
+        public Fragment getItem(int position) {
+            return fragments.get(position);
         }
 
         @Override
-        public ViewHolder onCreateHolder() {
-            return new ViewHolder(getViewByRes(R.layout.item_recycle_dou));
+        public int getCount() {
+            return fragments == null ? 0 : fragments.size();
         }
     }
 
-    class ViewHolder extends BaseRecViewHolder{
-        private View rooView;
-        private TextView tv;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            this.rooView=itemView;
-            this.tv=rooView.findViewById(R.id.tv_test);
-
-        }
-    }
 }
