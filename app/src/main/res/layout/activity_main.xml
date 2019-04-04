@@ -28,4 +28,10 @@
         android:layout_height="49dp"
         android:layout_gravity="center_horizontal"
         android:text="下拉选择菜单" />
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="320dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center_horizontal"
+        android:text="放qq侧滑item" />
 </LinearLayout>
