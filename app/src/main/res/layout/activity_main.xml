@@ -33,5 +33,11 @@
         android:layout_width="320dp"
         android:layout_height="49dp"
         android:layout_gravity="center_horizontal"
-        android:text="放qq侧滑item" />
+        android:text="仿qq侧滑item" />
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="320dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center_horizontal"
+        android:text="圆环进度条" />
 </LinearLayout>

@@ -8,4 +8,19 @@
         <attr name="progressTexrColor" format="color|reference" />
         <attr name="countdownTime" format="integer|reference" />
     </declare-styleable>
+
+    <!--自定义圆形进度条的属性值-->
+    <declare-styleable name="RoundProgressBar">
+        <attr name="roundColor" format="color" />
+        <attr name="roundProgressColor" format="color" />
+        <attr name="roundWidth" format="dimension" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="max" format="dimension" />
+        <attr name="textIsDisplayable" format="boolean" />
+        <attr name="style">
+            <enum name="STROKE" value="0" />
+            <enum name="FILL" value="1" />
+        </attr>
+    </declare-styleable>
 </resources>

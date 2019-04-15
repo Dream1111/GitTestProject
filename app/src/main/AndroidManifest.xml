@@ -19,7 +19,8 @@
         <activity android:name=".activity.TestCountDownViewActivity" />
         <activity android:name=".activity.TestDouActivity" />
         <activity android:name=".activity.TestDropdownButtonActivity" />
-        <activity android:name=".activity.TestRvSlidingActivity"/>
+        <activity android:name=".activity.TestRvSlidingActivity" />
+        <activity android:name=".activity.TestRoundProgressActivity" />
     </application>
 
 </manifest>

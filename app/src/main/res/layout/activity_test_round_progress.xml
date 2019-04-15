@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.meng.mengtestapplication.activity.TestRoundProgressActivity">
+
+    <com.meng.mengtestapplication.view.RoundProgressBar
+        android:id="@+id/roundProgress2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:roundColor="#D1D1D1"
+        app:roundProgressColor="@color/colorBack"
+        app:roundWidth="10dp"
+        app:textColor="#9A32CD"
+        app:textSize="18sp" />
+
+    <com.meng.mengtestapplication.view.RoundProgressBar
+        android:id="@+id/roundProgress4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
+        app:roundProgressColor="#C2C2C2"
+        app:roundWidth="1dp"
+        app:style="FILL" />
+
+    <com.meng.mengtestapplication.view.RoundProgressBar
+        android:id="@+id/roundProgress3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/roundProgress2"
+        android:layout_marginTop="20dp"
+        app:roundColor="#C2E2ff"
+        app:roundProgressColor="#cd3333"
+        app:roundWidth="10dp"
+        app:textIsDisplayable="false" />
+
+    <com.meng.mengtestapplication.view.RoundProgressBar
+        android:id="@+id/roundProgress5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/roundProgress4"
+        android:layout_marginTop="20dp" />
+
+    <com.meng.mengtestapplication.view.RoundProgressBar
+        android:id="@+id/roundProgress1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/roundProgress3"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="点击进度条开始" />
+</RelativeLayout>

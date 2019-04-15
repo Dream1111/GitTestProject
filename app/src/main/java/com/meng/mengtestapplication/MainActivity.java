@@ -9,10 +9,11 @@ import android.widget.Button;
 import com.meng.mengtestapplication.activity.TestCountDownViewActivity;
 import com.meng.mengtestapplication.activity.TestDouActivity;
 import com.meng.mengtestapplication.activity.TestDropdownButtonActivity;
+import com.meng.mengtestapplication.activity.TestRoundProgressActivity;
 import com.meng.mengtestapplication.activity.TestRvSlidingActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button button1, button2, button3, button4;
+    private Button button1, button2, button3, button4,button5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +23,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
         button4 = findViewById(R.id.button4);
+        button5 = findViewById(R.id.button5);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
+        button5.setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button4:
                 Intent intent3 = new Intent(this, TestRvSlidingActivity.class);
                 startActivity(intent3);
+                break;
+            case R.id.button5:
+                Intent intent4 = new Intent(this, TestRoundProgressActivity.class);
+                startActivity(intent4);
                 break;
         }
     }
